@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -45,6 +46,16 @@ export default function Home() {
               Instantly deploy your Next.js site to a public URL with ZEIT Now.
             </p>
           </a>
+          <Link href="/test">
+          <a
+            className="card"
+          >
+            <h3>TEST &rarr;</h3>
+            <p>
+              Go to test page
+            </p>
+          </a>
+          </Link>
         </div>
       </main>
 

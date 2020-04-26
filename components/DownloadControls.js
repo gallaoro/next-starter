@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { loadData, loadDataThenNavigate } from '../misc/actions';
+
+import Button from './presenational/Button';
 
 function LoadData({ loadData, loadDataThenNavigate }) {
   return (
     <div className="flex my-4">
-      <button type="button" className="p-4 bg-yellow-500 rounded mr-4 w-1/2" onClick={loadData}>
+      <Button action={loadData} tailwindClasses="bg-yellow-500 mr-4">
         Load data
-      </button>
+      </Button>
       <button type="button" className="p-4 bg-blue-500 text-white rounded w-1/2" onClick={loadDataThenNavigate}>
         Load data then navigate
       </button>

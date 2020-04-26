@@ -16,7 +16,7 @@ const __NEXT_REDUX_STORE__ = '__NEXT_REDUX_STORE__';
 const persistConfig = {
   key: 'primary',
   storage,
-  whitelist: ['exampleData', 'count'], // place to select which state you want to persist
+  whitelist: ['count'], // place to select which state you want to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -5,6 +5,8 @@ export const actionTypes = {
   RESET: 'RESET',
   LOAD_DATA: 'LOAD_DATA',
   LOAD_DATA_SUCCESS: 'LOAD_DATA_SUCCESS',
+  LOAD_DATA_THEN_NAVIGATE: 'LOAD_DATA_THEN_NAVIGATE',
+  LOAD_DATA_THEN_NAVIGATE_SUCCESS: 'LOAD_DATA_THEN_NAVIGATE_SUCCESS',
   START_CLOCK: 'START_CLOCK',
   STOP_CLOCK: 'STOP_CLOCK',
   TICK_CLOCK: 'TICK_CLOCK',
@@ -32,6 +34,17 @@ export function reset() {
 
 export function loadData() {
   return { type: actionTypes.LOAD_DATA };
+}
+
+export function loadDataThenNavigate() {
+  return { type: actionTypes.LOAD_DATA_THEN_NAVIGATE };
+}
+
+export function loadDataThenNavigateSuccess(data) {
+  return {
+    type: actionTypes.LOAD_DATA_THEN_NAVIGATE_SUCCESS,
+    data,
+  };
 }
 
 export function loadDataSuccess(data) {

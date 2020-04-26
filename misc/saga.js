@@ -3,9 +3,10 @@
 
 import { all, race, call, take, delay, put, takeLatest } from 'redux-saga/effects';
 import es6promise from 'es6-promise';
+import Router from 'next/router';
 import 'isomorphic-unfetch';
 
-import { actionTypes, failure, loadDataSuccess, tickClock } from './actions';
+import { actionTypes, failure, loadDataSuccess, tickClock, loadDataThenNavigateSuccess } from './actions';
 
 es6promise.polyfill();
 
@@ -15,6 +16,7 @@ function* runClockSaga() {
     yield delay(1000);
   }
 }
+
 function* loadDataSaga() {
   try {
     const res = yield fetch('https://jsonplaceholder.typicode.com/users');
@@ -22,6 +24,19 @@ function* loadDataSaga() {
     yield put(loadDataSuccess(data));
   } catch (err) {
     yield put(failure(err));
+  }
+}
+
+function* loadDataThenNavigateSaga() {
+  try {
+    const res = yield fetch('https://jsonplaceholder.typicode.com/users');
+    const data = yield res.json();
+    yield put(loadDataThenNavigateSuccess(data));
+
+    yield Router.push('/');
+  } catch (err) {
+    const message = typeof err === 'string' ? err : err.message;
+    yield put(failure(message));
   }
 }
 
@@ -35,6 +50,7 @@ function* rootSaga() {
       });
     }),
     takeLatest(actionTypes.LOAD_DATA, loadDataSaga),
+    takeLatest(actionTypes.LOAD_DATA_THEN_NAVIGATE, loadDataThenNavigateSaga),
   ]);
 }
 

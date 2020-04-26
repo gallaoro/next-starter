@@ -4,13 +4,18 @@ export const exampleInitialState = {
   lastUpdate: 0,
   light: false,
   count: 0,
-  exampleData: [],
+  placeholderData: [],
   error: null,
 };
 
 // REDUCERS
 export const rootReducer = (state = exampleInitialState, action) => {
   switch (action.type) {
+    case actionTypes.RESET:
+      return {
+        ...exampleInitialState,
+      };
+
     case actionTypes.FAILURE:
       return {
         ...state,
@@ -29,13 +34,13 @@ export const rootReducer = (state = exampleInitialState, action) => {
         ...{ count: state.count - 1 },
       };
 
-    case actionTypes.RESET:
+    case actionTypes.LOAD_DATA_SUCCESS:
       return {
         ...state,
-        ...{ count: exampleInitialState.count },
+        ...{ placeholderData: action.data },
       };
 
-    case actionTypes.LOAD_DATA_SUCCESS:
+    case actionTypes.LOAD_DATA_THEN_NAVIGATE_SUCCESS:
       return {
         ...state,
         ...{ placeholderData: action.data },

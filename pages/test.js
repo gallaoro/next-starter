@@ -11,8 +11,8 @@ export default function Test() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="title">
+      <main className="px-4">
+        <h1 className="text-5xl">
           Test page
         </h1>
         <Sample />

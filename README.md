@@ -7,6 +7,7 @@
 - [redux-saga](https://redux-saga.js.org/)
 - [redux-logger](https://github.com/LogRocket/redux-logger)
 - [redux-persist](https://github.com/rt2zz/redux-persist)
+- [es-lint](https://eslint.org/)
 
 ### Preview
 ![preview][preview]

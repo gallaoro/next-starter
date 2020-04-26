@@ -6,45 +6,52 @@ export const actionTypes = {
   LOAD_DATA: 'LOAD_DATA',
   LOAD_DATA_SUCCESS: 'LOAD_DATA_SUCCESS',
   START_CLOCK: 'START_CLOCK',
+  STOP_CLOCK: 'STOP_CLOCK',
   TICK_CLOCK: 'TICK_CLOCK',
-}
+};
 
 export function failure(error) {
   return {
     type: actionTypes.FAILURE,
     error,
-  }
+  };
 }
 
 // ACTIONS
 export function incrementCount() {
-  return { type: actionTypes.INCREMENT }
+  return { type: actionTypes.INCREMENT };
 }
 
 export function decrementCount() {
-  return { type: actionTypes.DECREMENT }
+  return { type: actionTypes.DECREMENT };
 }
 
 export function reset() {
-  return { type: actionTypes.RESET }
+  return { type: actionTypes.RESET };
 }
 
 export function loadData() {
-  return { type: actionTypes.LOAD_DATA }
+  return { type: actionTypes.LOAD_DATA };
 }
 
 export function loadDataSuccess(data) {
   return {
     type: actionTypes.LOAD_DATA_SUCCESS,
     data,
-  }
+  };
 }
 
 export function startClock() {
   return {
     type: actionTypes.START_CLOCK,
     ts: Date.now(),
-  }
+  };
+}
+
+export function stopClock() {
+  return {
+    type: actionTypes.STOP_CLOCK,
+  };
 }
 
 export function tickClock(isServer) {
@@ -52,5 +59,5 @@ export function tickClock(isServer) {
     type: actionTypes.TICK_CLOCK,
     light: !isServer,
     ts: Date.now(),
-  }
+  };
 }

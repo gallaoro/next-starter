@@ -1,20 +1,20 @@
-import App from 'next/app'
-import React from 'react'
-import withReduxStore from '../misc/store'
-import { Provider } from 'react-redux'
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react'
+import App from 'next/app';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import '../styles/index.css'
+import withReduxStore from '../misc/store';
+import '../styles/index.css';
 
 class MyApp extends App {
   constructor(props) {
-    super(props)
-    this.persistor = persistStore(props.reduxStore)
+    super(props);
+    this.persistor = persistStore(props.reduxStore);
   }
 
   render() {
-    const { Component, pageProps, reduxStore } = this.props
+    const { Component, pageProps, reduxStore } = this.props;
     return (
       <Provider store={reduxStore}>
         <PersistGate
@@ -24,8 +24,8 @@ class MyApp extends App {
           <Component {...pageProps} />
         </PersistGate>
       </Provider>
-    )
+    );
   }
 }
 
-export default withReduxStore(MyApp)
+export default withReduxStore(MyApp);

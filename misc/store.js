@@ -36,6 +36,7 @@ export function initializeStore(initialState = exampleInitialState) {
     persistedReducer,
     initialState,
     bindMiddleware([sagaMiddleware, logger]),
+    // bindMiddleware([sagaMiddleware]),
   );
 
   store.sagaTask = sagaMiddleware.run(rootSaga);
@@ -55,8 +56,7 @@ function getOrCreateStore(initialState) {
   }
   return window[__NEXT_REDUX_STORE__];
 }
-
-export default (App) => (
+const Store = (App) => (
   class AppWithRedux extends React.Component {
     static async getInitialProps(appContext) {
       // Get or Create the store with `undefined` as initialState
@@ -88,3 +88,5 @@ export default (App) => (
     }
   }
 );
+
+export default Store;
